@@ -1,39 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace poc
 {
+
     public partial class Form1 : Form
     {
+        Audiogram Audiogram = new Audiogram();
+        bool playing = false;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void OnClick(object sender, EventArgs e)
         {
-
+            if (!playing)
+            {
+                var stopped = await Audiogram.Play();
+            }
+            else Audiogram.Confirm();
+            playing = true;
         }
 
-        private void onLeftClick(object sender, EventArgs e)
-        {
-
-        }
-        private void onRightClick(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
